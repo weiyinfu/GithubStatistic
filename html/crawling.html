@@ -1,0 +1,33 @@
+<html>
+<!--正在爬取时，向用户展示爬取过程的输出。相当于一个webshell-->
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #console {
+            background-color: black;
+            color: whitesmoke;
+            font-size: 20px;
+            font-family: Consolas, serif;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            line-break: auto;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .serverSay {
+            color: #00ff00;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+<div id="console"></div>
+</body>
+<script src="../crawling.js"></script>
+</html>

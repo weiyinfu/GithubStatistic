@@ -1,0 +1,107 @@
+#starAndFork {
+  .key {
+    color: #777777;
+  }
+
+  .value {
+    color: black;
+    font-family: Consolas, serif;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.loading {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 10%;
+  position: relative;
+  background-color: #eeeeee;
+  img {
+    /*top: 40%;*/
+    position: relative;
+    z-index: 2;
+  }
+}
+
+#return {
+  i {
+    float: left;
+    color: #ee2222;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #languageUse {
+    float: left;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+  }
+
+  #languageUseBar {
+    float: right;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+  }
+
+  #repoRank {
+    float: right;
+    height: 50%;
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+    font-family: 楷体, Serif, serif;
+    font-size: 2em;
+    vertical-align: middle;
+  }
+
+  #starAndFork {
+    float: left;
+    height: 50%;
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+    margin: auto 0;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #languageUse {
+    width: 100%;
+    min-height: 900px;
+  }
+
+  #languageUseBar {
+    width: 100%;
+    min-height: 900px;
+  }
+
+  #repoRank {
+    width: 100%;
+    text-align: center;
+    font-family: 楷体, Serif, serif;
+    font-size: 2em;
+    vertical-align: middle;
+    min-height: 900px;
+  }
+
+  #starAndFork {
+    width: 100%;
+    height: 900px;
+    text-align: center;
+    margin: auto 0;
+    font-size: 30px;
+    overflow: hidden;
+  }
+}

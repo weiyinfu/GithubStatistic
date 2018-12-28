@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../search.css"/>
+</head>
+<body>
+<div id="cover">
+    <img src="img/loading.gif">
+</div>
+<div id="head">
+    <a href="about.html">About</a>
+</div>
+
+<div id="search">
+    <div id="logoDiv">
+        <span>Github</span>
+        <img src="img/github.jpg" id="searchImage">
+        <span>Statistic</span>
+    </div>
+    <form onsubmit="doSubmit();return false">
+        <input id="searchBox" placeholder="输入github用户名">
+        <input id="searchButton" type="submit" value="搜索"/>
+    </form>
+    <span id="remind"></span>
+</div>
+</body>
+<script src="../search.js"></script>
+</html>

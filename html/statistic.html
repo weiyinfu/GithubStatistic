@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../show.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="starAndFork">
+
+    <div class="loading" v-if="loading"><img src="img/loading.gif"></div>
+    <div v-else>
+        <a id="return" href="search.html" v-if="!loading"> <i class="fa fa-home fa-3x"></i></a>
+        <ul>
+            <li><span class="key">用户名</span>：<span class="value">{{username}}</span></li>
+            <li>
+                <span class="key">被star数</span>：
+                <span class="value">{{starNumber}}</span>
+            </li>
+            <li>
+                <span class="key"> 被fork数</span>：
+                <span class="value">{{forkNumber}}</span>
+            </li>
+            <li>
+                <span class="key">原创数</span>：
+                <span class="value">{{originalNumber}}</span>
+            </li>
+            <li><span class="key">fork别人数 </span>：
+                <span class="value">{{forkOthersNumber}}</span>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div id="languageUseBar">
+    <div class="loading"><img src="img/loading.gif"></div>
+</div>
+<div id="languageUse">
+    <div class="loading"><img src="img/loading.gif"></div>
+</div>
+<div id="repoRank">
+    <div class="loading"><img src="img/loading.gif"></div>
+</div>
+<script src="../show.js"></script>
+</body>
+</html>

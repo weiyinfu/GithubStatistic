@@ -1,0 +1,22 @@
+{
+  "name": "github-statistic",
+  "version": "1.0.0",
+  "description": "github crawler and statitic based on node js",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weiyinfu/GitStatistic.git"
+  },
+  "author": "weiyinfu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weiyinfu/GithubStatistic/issues"
+  },
+  "homepage": "https://github.com/weiyinfu/GithubStatistic#readme"
+}
