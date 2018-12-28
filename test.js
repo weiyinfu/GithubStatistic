@@ -1,8 +1,13 @@
-var app = require("express")()
-var bodyParser = require("body-parser")
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
-app.get("/", (req, resp) => {
-    return resp.json(req.query)
-})
-app.listen(8899)
+var p = "http://localhost:8899/crawling.html"
+var url = require("url")
+var res = url.parse(p)
+console.log(url)
+console.log(res)
+x = new url.Url()
+x.host = res.host
+x.port = res.port
+x.protocol = "ws"
+x.pathname = "/crawling"
+x.search = "username=haha"
+console.log(x)
+console.log(url.format(x))

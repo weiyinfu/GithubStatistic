@@ -2,8 +2,6 @@
  * 爬取过程页面
  * 使用websocket向用户展示爬取过程
  * */
-
-
 var url = require("url")
 var querystring = require("querystring")
 var $ = require("jquery")
@@ -17,27 +15,37 @@ function parseUserName() {
     return query.username
 }
 
+function getWsUrl(username) {
+    var res = url.parse(location.href)
+    x = new url.Url()
+    x.protocol = "ws"
+    x.host = res.host
+    x.port = res.port
+    x.pathname = "/crawling"
+    x.search = "username=" + username
+    return url.format(x)
+}
+
 var username = parseUserName()
 if (!username) {
     location.href = "search.html"
 }
 
-var wsServer = 'ws://localhost/crawling/?username=' + username //服务器地址
-var websocket = new WebSocket(wsServer) //创建WebSocket对象
+var websocket = new WebSocket(getWsUrl(username)) //创建WebSocket对象
 
 function write(message) {
     $("#console").append($(`<p><span class="serverSay">&gt;</span>&nbsp;${message}</p>`))
 }
 
-websocket.onopen = function (evt) {
-    //建立连接
+//建立连接
+websocket.onopen = evt => {
     write("connection opened")
 }
-websocket.onclose = function (evt) {
+websocket.onclose = evt => {
 //已经关闭连接
     write("connection close")
 }
-websocket.onmessage = function (evt) {
+websocket.onmessage = evt => {
 //收到服务器消息，使用evt.data提取
     var message = evt.data
     write(message)
@@ -53,6 +61,6 @@ websocket.onmessage = function (evt) {
         ele.scrollTop = ele.scrollHeight
     }
 }
-websocket.onerror = function (evt) {//产生异常
+websocket.onerror = evt => {//产生异常
     console.log(evt)
 }
