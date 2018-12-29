@@ -18,10 +18,10 @@ function parseUserName() {
 function getWsUrl(username) {
     var res = url.parse(location.href)
     x = new url.Url()
-    x.protocol = "ws"
+    x.protocol = res.protocol == "https" ? "wss" : "ws"
     x.host = res.host
     x.port = res.port
-    x.pathname = res.pathname + "/../crawling"//使用相对路径
+    x.pathname = res.pathname + "/../wss/crawling"//使用相对路径
     x.search = "username=" + username
     return url.format(x)
 }
