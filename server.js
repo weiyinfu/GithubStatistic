@@ -3,20 +3,24 @@
 * */
 var express = require("express")
 var webpack = require('webpack')
-var webpackDevMiddleware = require('webpack-dev-middleware')
+
 var ws = require("ws")
 var http = require("http")
 
 
-var webpackDevConfig = require('./webpack.config')
+var webpackConfig = require('./webpack.config')
 var httpHandler = require("./httpHandler")
 var wsHandler = require("./wsHandler")
 var config = require("./config")
 
 //定义好express app
 app = express()
-var compiler = webpack(webpackDevConfig)
-app.use(webpackDevMiddleware(compiler))
+//如果是开发模式，那么启用webpack自动更新，否则就当没有webpack
+if (webpackConfig.mode == "development") {
+    var webpackDevMiddleware = require('webpack-dev-middleware')
+    var compiler = webpack(webpackConfig)
+    app.use(webpackDevMiddleware(compiler))
+}
 
 //设置静态资源
 app.use(express.static("./dist"))

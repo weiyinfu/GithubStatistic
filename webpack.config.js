@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 module.exports = {
-    mode: "production",
-    // mode: "development",
+    // mode: "production",
+    mode: "development",
     entry: {
         "show.js": "./js/show.js",
         "crawling.js": "./js/crawling.js",
