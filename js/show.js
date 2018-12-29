@@ -222,7 +222,7 @@ var username = parseUserName()
 if (!username) {
     location.href = "search.html"
 } else {
-    axios.get("/githubinfo/" + username).then(function (resp) {
+    axios.get("githubinfo/" + username).then(function (resp) {
 
         if (resp.data == "updating") {
             location.href = "crawling.html?username=" + username

@@ -1,5 +1,3 @@
-var mongo = require("mongodb")
-mongo.connect("mongodb://weiyinfu.cn:27017", {}, (err, cli) => {
-    console.log(err)
-    console.log(cli)
-})
+url = require("url")
+console.log(url)
+console.log(url.format(new url.URL("http://weiyinfu.cn/github/sdfd" + '/../fdfd')))

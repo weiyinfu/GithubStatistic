@@ -46,14 +46,14 @@ function doSubmit() {
         return false
     }
     $("#cover").css("display", "block")
-    axios.get("/githubinfo/" + username).then(resp => {
+    axios.get("githubinfo/" + username).then(resp => {
         resp = resp.data
         if (resp == "updating") {//太久了正在更新
             location.href = "crawling.html?username=" + username
             return false
         }
         if (resp == null || resp.length == 0) {//没有现成的数据，开始爬取
-            axios.get("/startcrawl/" + username).then(resp => {
+            axios.get("startcrawl/" + username).then(resp => {
                 if (resp.data == "no this user") {//如果没有此用户
                     $("#cover").css("display", "none")
                     flash(document.querySelector("#searchBox"), 8, 10, 100)

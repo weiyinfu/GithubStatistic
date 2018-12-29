@@ -21,7 +21,7 @@ function getWsUrl(username) {
     x.protocol = "ws"
     x.host = res.host
     x.port = res.port
-    x.pathname = "/crawling"
+    x.pathname = res.pathname + "/../crawling"//使用相对路径
     x.search = "username=" + username
     return url.format(x)
 }

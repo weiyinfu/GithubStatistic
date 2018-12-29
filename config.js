@@ -12,7 +12,7 @@ if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir)
 }
 //如果使用MongoDao，需要指明URL
-var mongoUrl = "mongodb://localhost:27017"
+var mongoUrl = "mongodb://github:good@localhost:27017/githubstatistic"
 
 
 module.exports = {
