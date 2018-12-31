@@ -14,8 +14,9 @@ if (!fs.existsSync(targetDir)) {
 //如果使用MongoDao，需要指明URL
 var mongoUrl = "mongodb://github:good@localhost:27017/githubstatistic"
 
-
 module.exports = {
+    // mode: "development",
+    mode: "production",
     //http服务的端口号
     port: 80,
     targetDir: targetDir,
