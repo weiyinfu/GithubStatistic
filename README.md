@@ -3,6 +3,12 @@
 # 功能
 通过爬虫爬取某个用户github全部repo信息，统计他的语言分布、获取的star数、fork数、最好的repo等信息。
 
+# 运行
+## 开发环境
+修改config.js的mode="development"，在项目根目录下运行node server.js即可。
+## 生产环境
+修改config.js的mode="production"，在项目根目录下运行webpack,node server.js两个命令。
+
 # 技术栈
 * express：后端框架
 * cheerio+axios：爬虫
