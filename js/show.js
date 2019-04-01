@@ -114,7 +114,8 @@ function render(repos) {
     xAxis: {
       data: languageNameValueList.map(x => x.name),
       axisLabel: {
-        interval: 0
+        interval: 0,
+        rotate: -30
       }
     },
     yAxis: {},
