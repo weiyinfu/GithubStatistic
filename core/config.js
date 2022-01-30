@@ -21,7 +21,8 @@ module.exports = {
     port: 80,
     targetDir: targetDir,
     mongoUrl: mongoUrl,
-    // dao: "MongoDao",//FileDao or MongoDao,
-    dao: "FileDao",
+    // dao: "MongoDao",
+    dao: "InspireDao",
+    // dao: "FileDao",
     updateInterval: 1000 * 3 * 24 * 60 * 60,//更新频率，默认为1000毫秒*3天*24小时*60分钟*60秒
 }

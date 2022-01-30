@@ -7,15 +7,24 @@ const conf = require("./config")
 const path = require("path")
 
 class GithubFileDao {
-    static loadUser(username, callback) {
-        var filename = path.join(conf.targetDir, username + ".json")
-        var exist = fs.existsSync(filename)
+    constructor() {
+        this.folder = conf.targetDir;
+    }
+
+    loadUser(username, callback) {
+        const filename = path.join(this.folder, username + ".json")
+        const exist = fs.existsSync(filename)
         if (!exist) {
             callback(null)
             return
         }
         //每三天更新一次
-        var res = fs.readFileSync(filename).toString("utf8")
+        const res = fs.readFileSync(filename).toString("utf8")
+        try {
+            JSON.parse(res);
+        } catch (e) {
+            return
+        }
         callback({
             repos: JSON.parse(res),
             username: username,
@@ -23,18 +32,17 @@ class GithubFileDao {
         })
     }
 
-    static loadUserList(callback) {
-        var files = fs.readdirSync(conf.targetDir)
+    loadUserList(callback) {
+        let files = fs.readdirSync(this.folder)
         files = files.filter(x => x.endsWith('.json')).map(x => x.slice(0, x.length - ".json".length))
         callback(files)
     }
 
-    static putUser(username, repoList, callback) {
-        var filename = path.join(conf.targetDir, username + ".json")
+    putUser(username, repoList, callback) {
+        const filename = path.join(this.folder, username + ".json")
         fs.writeFileSync(filename, JSON.stringify(repoList))
         callback()
     }
-
 }
 
 module.exports = GithubFileDao

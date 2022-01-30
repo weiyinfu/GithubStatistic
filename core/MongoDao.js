@@ -5,35 +5,38 @@ var mongo = require("mongodb")
 var conf = require("./config")
 var pool = require("generic-pool")
 
-var connectionPool = pool.createPool({
-    create: function () {
-        return new Promise((resolve, reject) => {
-            mongo.connect(conf.mongoUrl, {useNewUrlParser: true}, (err, cli) => {
-                    if (err) {
-                        reject(err)
-                    } else {
-                        resolve(cli)
-                    }
-                }
-            )
-        })
-    }, destroy: cli => {
-        cli.close()
-    }
-}, {
-    max: 10,
-    min: 3
-})
-
 class MongoDao {
-    static clearConnections() {
-        myPool.drain().then(() => {
+    constructor() {
+        this.connectionPool = pool.createPool({
+            create: function () {
+                return new Promise((resolve, reject) => {
+                    mongo.connect(conf.mongoUrl, {useNewUrlParser: true}, (err, cli) => {
+                            if (err) {
+                                reject(err)
+                            } else {
+                                resolve(cli)
+                            }
+                        }
+                    )
+                })
+            }, destroy: cli => {
+                cli.close()
+            }
+        }, {
+            max: 10,
+            min: 3
+        })
+
+    }
+
+    clearConnections() {
+        this.connectionPool.drain().then(() => {
             myPool.clear();
         })
     }
 
     static basicFind(condition, callback) {
-        connectionPool.acquire().then(
+        this.connectionPool.acquire().then(
             cli => {
                 cli.db("githubstatistic").collection("users").find(condition).toArray().then(
                     (data) => {
@@ -46,22 +49,21 @@ class MongoDao {
         })
     }
 
-
-    static loadUser(username, callback) {
-        MongoDao.basicFind({username: username}, data => {
-            if (data.length == 0) callback(null)
+    loadUser(username, callback) {
+        this.basicFind({username: username}, data => {
+            if (data.length === 0) callback(null)
             else callback(data[0])
         })
     }
 
-    static loadUserList(callback) {
-        MongoDao.basicFind({}, (data) => {
+    loadUserList(callback) {
+        this.basicFind({}, (data) => {
             callback(data.map(x => x.username))
         })
     }
 
-    static insertOne(username, repos, callback) {
-        connectionPool.acquire().then(cli => {
+    insertOne(username, repos, callback) {
+        this.connectionPool.acquire().then(cli => {
             cli.db("githubstatistic").collection("users").insertOne({
                 repos: repos,
                 username: username,
@@ -78,8 +80,8 @@ class MongoDao {
         })
     }
 
-    static update(username, repos, callback) {
-        connectionPool.acquire().then(cli => {
+    update(username, repos, callback) {
+        this.connectionPool.acquire().then(cli => {
             cli.db("githubstatistic").collection("users").updateOne({username: username}, {
                 $set: {
                     repos: repos,
@@ -93,9 +95,9 @@ class MongoDao {
         })
     }
 
-    static putUser(username, repos, callback) {
-        MongoDao.basicFind({username: username}, user => {
-            if (user == null || user.length == 0) {
+    putUser(username, repos, callback) {
+        this.basicFind({username: username}, user => {
+            if (user == null || user.length === 0) {
                 MongoDao.insertOne(username, repos, callback)
             } else {
                 MongoDao.update(username, repos, callback)
@@ -105,7 +107,7 @@ class MongoDao {
 }
 
 module.exports = MongoDao
-if (require && require.main == module) {
+if (require && require.main === module) {
 
     MongoDao.loadUser("weiyinfu", (res) => {
         console.log(res)

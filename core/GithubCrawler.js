@@ -12,6 +12,7 @@ class GithubCrawler {
             .get(`http://github.com/${username}`)
             .then(resp => callback(true))
             .catch(err => {
+                console.error(err)
                 callback(false)
             })
     }
@@ -37,7 +38,7 @@ class GithubCrawler {
         axios
             .get(url)
             .then(resp => {
-                if (resp.status == 200) {
+                if (resp.status === 200) {
                     this.handler(resp.data)
                 } else {
                     this.cout(resp.status)

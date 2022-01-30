@@ -230,12 +230,12 @@ if (!username) {
     location.href = "search.html"
 } else {
     axios.get("githubinfo/" + username).then(function (resp) {
-        if (resp.data == "updating") {
+        if (resp.data === "updating") {
             location.href = "crawling.html?username=" + username
             return
         }
         var repos = resp.data
-        if (repos.length == 0) {
+        if (repos.length === 0) {
             location.href = "youHaveNothing.html"
         } else {
             render(resp.data)

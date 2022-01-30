@@ -4,12 +4,11 @@
   "description": "github crawler and statitic based on node js",
   "main": "server.js",
   "dependencies": {
-    "@byteinspire/inspirecloud-api": "*",
+    "@byteinspire/api": "^1.0.12",
     "axios": "^0.25.0",
     "cheerio": "^1.0.0-rc.10",
     "echarts": "^5.3.0",
     "express": "^4.17.1",
-    "extract-text-webpack-plugin": "1.0.1",
     "generic-pool": "^3.8.2",
     "jquery": "^3.6.0",
     "mongodb": "^4.3.1",
@@ -19,6 +18,7 @@
     "ws": "^8.4.2"
   },
   "devDependencies": {
+    "@byteinspire/inspirecloud-api": "*",
     "css-loader": "^6.5.1",
     "less": "^4.1.2",
     "less-loader": "7.3.0",
