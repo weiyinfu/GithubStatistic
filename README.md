@@ -30,6 +30,7 @@
 * GithubCrawler：github爬虫
 * config.js：项目配置
 * common.js：全局变量，例如存储正在运行的爬虫
+* src+index.js：轻服务封装
 
 # 前端页面
 * 搜索页：首页，用于搜索用户信息

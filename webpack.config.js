@@ -1,4 +1,4 @@
-var conf = require("./config")
+var conf = require("./core/config")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     mode: conf.mode,

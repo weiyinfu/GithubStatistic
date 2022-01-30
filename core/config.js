@@ -2,9 +2,9 @@
  * 配置信息
  * config中不能引用其余包，保证config出于依赖最底层，防止出现依赖回路
  * */
-var os = require("os")
-var path = require("path")
-var fs = require("fs")
+const os = require("os")
+const path = require("path")
+const fs = require("fs")
 
 //如果使用FileDao，需要指明存放目标文件的路径
 var targetDir = path.join(os.homedir(), 'github-statistic')
@@ -22,6 +22,6 @@ module.exports = {
     targetDir: targetDir,
     mongoUrl: mongoUrl,
     // dao: "MongoDao",//FileDao or MongoDao,
-    dao:"FileDao",
+    dao: "FileDao",
     updateInterval: 1000 * 3 * 24 * 60 * 60,//更新频率，默认为1000毫秒*3天*24小时*60分钟*60秒
 }

@@ -3,15 +3,15 @@ const todoRouter = require('./routers/todo');
 var http = require("http")
 var ws = require("ws")
 const express = require('express');
-const httpHandler = require("../../httpHandler");
-const wsHandler = require("../../wsHandler");
+const httpHandler = require("../core/httpHandler");
+const wsHandler = require("../core/wsHandler");
 
 const app = express();
 
 // 为应用使用中间件
 // 静态文件中间件
-app.use(express.static(path.join(__dirname, '../../dist')));
-app.use(express.static(path.join(__dirname, '../../html')));
+app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../html')));
 // 请求体 parse 中间件，用于 parse json 格式请求体
 app.use(express.json());
 

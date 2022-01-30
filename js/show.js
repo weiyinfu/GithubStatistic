@@ -19,7 +19,10 @@ var url = require("url")
 var querystring = require("querystring")
 
 var statistic = require("./statistic")
-
+import { LegendComponent } from 'echarts/components';
+import { GridComponent } from 'echarts/components';
+echarts.use([GridComponent]);
+echarts.use([LegendComponent]);
 //根据url解析用户名字
 function parseUserName() {
     var res = url.parse(location.href)
@@ -144,7 +147,7 @@ function render(repos) {
 
     //repo排名
     var repoRank = statistic.repoRank(repos)
-    if (repoRank.length == 0) {
+    if (repoRank.length === 0) {
         document.querySelector("#repoRank").innerHTML = "<span>You have no good repos</span>"
     } else {
         var repoNameValues = []
