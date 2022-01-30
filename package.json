@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "@byteinspire/api": "^1.0.12",
-    "axios": "^0.25.0",
+    "axios": "^0.21.2",
     "cheerio": "^1.0.0-rc.10",
     "echarts": "^5.3.0",
     "express": "^4.17.1",
