@@ -227,7 +227,7 @@ function render(repos) {
 
 var username = parseUserName()
 if (!username) {
-    location.href = "search.html"
+    location.href = "index.html"
 } else {
     axios.get("githubinfo/" + username).then(function (resp) {
         if (resp.data === "updating") {

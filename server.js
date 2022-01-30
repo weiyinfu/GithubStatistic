@@ -50,5 +50,5 @@ server.on('upgrade', function upgrade(request, socket, head) {
     })
 })
 server.listen(config.port, function () {
-    log("http://localhost/search.html")
+    log("http://localhost/index.html")
 })

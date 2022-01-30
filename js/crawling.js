@@ -30,7 +30,7 @@ function getWsUrl(username) {
 
 var username = parseUserName()
 if (!username) {
-    location.href = "search.html"
+    location.href = "index.html"
 }
 
 
