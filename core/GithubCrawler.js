@@ -139,7 +139,7 @@ class GithubCrawler {
 module.exports = GithubCrawler
 if (require.main == module) {
     fs = require("fs")
-    var username = "weiyinfu"
+    var username = "VOID001"
     new GithubCrawler(
         username,
         function (s) {

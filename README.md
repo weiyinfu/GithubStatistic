@@ -46,7 +46,7 @@
 # 轻服务
 https://qingfuwu.cn/
 
-轻服务不支持websocket，因此运行时会出错。
+轻服务不支持websocket，因此只能使用轮询替代websocket。
 
 # 后记
 相似网站[githuber.cn](https://githuber.cn/people/16095925)
