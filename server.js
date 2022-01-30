@@ -4,7 +4,6 @@
 var express = require("express")
 var webpack = require('webpack')
 var process = require("process")
-var cluster = require("cluster")
 //必须在引入debug模块之前设置好环境变量
 process.env.DEBUG = "*"
 var log = require("debug")("server")
@@ -13,9 +12,9 @@ var http = require("http")
 
 
 var webpackConfig = require('./webpack.config')
-var httpHandler = require("./httpHandler")
-var wsHandler = require("./wsHandler")
-var config = require("./config")
+var httpHandler = require("./core/httpHandler")
+var wsHandler = require("./core/wsHandler")
+var config = require("./core/config")
 
 //定义好express app
 app = express()

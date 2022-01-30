@@ -4,9 +4,9 @@ var conf = require("./config")
 var fileDao = require("./FileDao")
 var mongoDao = require("./MongoDao")
 var dao = null
-if (conf.dao == "FileDao") {
+if (conf.dao === "FileDao") {
     dao = fileDao
-} else if (conf.dao == "MongoDao") {
+} else if (conf.dao === "MongoDao") {
     dao = mongoDao
 } else {
     throw new Error("unkown dao type " + conf.dao)

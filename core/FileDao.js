@@ -2,9 +2,9 @@
  * 使用文件实现
  * */
 
-var fs = require("fs")
-var conf = require("./config")
-var path = require("path")
+const fs = require("fs")
+const conf = require("./config")
+const path = require("path")
 
 class GithubFileDao {
     static loadUser(username, callback) {
@@ -38,8 +38,3 @@ class GithubFileDao {
 }
 
 module.exports = GithubFileDao
-if (require && require.main == module) {
-    GithubFileDao.loadUser("weiyinfu", (repos) => {
-        console.log(repos)
-    })
-}

@@ -34,18 +34,16 @@ function starAndFork(repos) {
 
 //对repo进行打分排序，找到比较好的几个repo
 function repoRank(repos) {
-    for (var repo of repos) {
-        var self = repo.forkedFrom ? -1 : 1
-        repo.score = ( repo.star + repo.fork * 1.5 ) * self
+    for (let repo of repos) {
+        const self = repo.forkedFrom ? -1 : 1
+        repo.score = (repo.star + repo.fork * 1.5) * self
     }
     var a = []
-    for (var i of repos) a.push(i)
-    a.sort(function (x, y) {
-        return y.score - x.score
-    })
-    var goodRepos = []
-    for (var i = 0; i < a.length; i++) {
-        var it = a[i]
+    for (let i of repos) a.push(i)
+    a.sort((x, y) => y.score - x.score)
+    const goodRepos = []
+    for (let i = 0; i < a.length; i++) {
+        const it = a[i]
         if (it.star || it.fork) {
             goodRepos.push({
                 star: it.star, fork: it.fork, name: it.repoName, desc: it.repoDesc, score: it.score
@@ -59,14 +57,3 @@ function repoRank(repos) {
 }
 
 module.exports = {languageUse: languageUse, starAndFork: starAndFork, repoRank: repoRank}
-if (require && require.main == module) {
-    path = require("path")
-    os = require("os")
-    filename = path.join(os.homedir(), 'github-statistic', "qibaoguang.json")
-
-    repos = JSON.parse(require('fs').readFileSync(filename).toString("utf8"))
-    // console.log(repos)
-    // console.log(languageUse(repos))
-    // console.log(starAndFork(repos))
-    console.log(repoRank(repos))
-}

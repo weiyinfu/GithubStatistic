@@ -1,0 +1,10 @@
+path = require("path")
+os = require("os")
+const statistic = require("./js/statistic")
+filename = path.join(os.homedir(), 'github-statistic', "weiyinfu.json")
+
+repos = JSON.parse(require('fs').readFileSync(filename).toString("utf8"))
+// console.log(repos)
+// console.log(languageUse(repos))
+// console.log(starAndFork(repos))
+console.log(statistic.repoRank(repos))

@@ -22,14 +22,15 @@
 * generic-pool：数据库连接池
 
 # 文件说明
-* html/js/css：存放前端内容
+* html+js+css：存放前端内容
 * server.js：程序入口，运行此程序启动服务，websocket和http共用同一端口
-* httpHandler：处理http请求
-* wsHandler：处理websocket请求
-* 数据库相关GithubDao.js、MongoDao.js、FileDao.js，使用MongoDb还是使用文件作为存储时可配置的，二者遵循同样的接口（即GithubDao）
-* GithubCrawler：github爬虫
-* config.js：项目配置
-* common.js：全局变量，例如存储正在运行的爬虫
+* core/httpHandler：处理http请求
+* core/wsHandler：处理websocket请求
+* core下数据库相关GithubDao.js、MongoDao.js、FileDao.js，使用MongoDb还是使用文件作为存储时可配置的，二者遵循同样的接口（即GithubDao）
+* core/GithubCrawler：github爬虫
+* core/config.js：项目配置
+* core/common.js：全局变量，例如存储正在运行的爬虫
+* src+index.js：轻服务封装
 
 # 前端页面
 * 搜索页：首页，用于搜索用户信息
@@ -42,6 +43,10 @@
 当直接访问详情页时，如果不存在用户信息，直接跳到空白页；如果用户信息已过时，跳到过程页。  
 当在过程页时，爬取完毕去往详情页，爬取失败去往空白页。
 
+# 轻服务
+https://qingfuwu.cn/
+
+轻服务不支持websocket，因此运行时会出错。
 
 # 后记
 相似网站[githuber.cn](https://githuber.cn/people/16095925)
