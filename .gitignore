@@ -2,3 +2,11 @@
 .idea/
 dist/
 node_modules/
+weiyinfu.json
+yarn-error.log
+
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+.inspirecloud.service.conf
