@@ -59,14 +59,3 @@ function repoRank(repos) {
 }
 
 module.exports = {languageUse: languageUse, starAndFork: starAndFork, repoRank: repoRank}
-if (require && require.main == module) {
-    path = require("path")
-    os = require("os")
-    filename = path.join(os.homedir(), 'github-statistic', "qibaoguang.json")
-
-    repos = JSON.parse(require('fs').readFileSync(filename).toString("utf8"))
-    // console.log(repos)
-    // console.log(languageUse(repos))
-    // console.log(starAndFork(repos))
-    console.log(repoRank(repos))
-}

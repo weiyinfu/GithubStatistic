@@ -4,7 +4,6 @@
 
 axios = require("axios")
 cheerio = require("cheerio")
-fs = require("fs")
 
 class GithubCrawler {
   //判断用户是否存在
@@ -72,7 +71,7 @@ class GithubCrawler {
       var li = lis.eq(i)
       var repo = {
         repoName: li
-          .find("h3")
+          .find("h3 a")
           .text()
           .trim(),
         repoUrl: li
@@ -88,12 +87,12 @@ class GithubCrawler {
           .text()
           .trim(),
         star: li
-          .find(".muted-link.mr-3")
+          .find(".Link--muted.mr-3")
           .eq(0)
           .text()
           .trim(),
         fork: li
-          .find(".muted-link.mr-3")
+          .find(".Link--muted.mr-3")
           .eq(1)
           .text()
           .trim(),
@@ -138,6 +137,7 @@ class GithubCrawler {
 
 module.exports = GithubCrawler
 if (require.main == module) {
+  fs = require("fs")
   var username = "weiyinfu"
   new GithubCrawler(
     username,
@@ -147,7 +147,7 @@ if (require.main == module) {
     function(data) {
       //导出爬取到的数据
       console.log("正在保存数据" + data.length)
-      fs.writeFileSync(username + ".json", JSON.stringify(data))
+      fs.writeFileSync(username + ".json", JSON.stringify(data,null,2))
     }
   ).start()
   GithubCrawler.exist("cuiqingcai", flag => {

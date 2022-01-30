@@ -1,5 +1,5 @@
 var conf = require("./config")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     mode: conf.mode,
     entry: {
@@ -12,19 +12,24 @@ module.exports = {
         filename: "[name]"
     },
     module: {
-        rules: [{
-            test: /\.less$/,
-            use: ExtractTextPlugin.extract({use: ['css-loader', 'less-loader']})
-        }]
+        rules: [
+            {
+                test: /\.less$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+            }
+        ]
     },
     node: {
-        fs: "empty"
+        // fs: "empty"
     },
-    plugins: [new ExtractTextPlugin({
-        filename: getPath => {
-            var targetName = getPath("[name]")
-            var name = targetName.slice(0, targetName.lastIndexOf("."))
-            return name + ".css"
-        }
-    })],
+    plugins: [
+        new MiniCssExtractPlugin({
+            linkType: false,
+            filename: x => {
+                var targetName = x.chunk.name;
+                var name = targetName.slice(0, targetName.lastIndexOf("."))
+                return name + ".css"
+            }
+        }),
+    ]
 }
