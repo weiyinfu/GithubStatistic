@@ -10,3 +10,9 @@ node_modules/
 .idea/
 .DS_Store
 .inspirecloud.service.conf
+
+*.lock
+.pynb_checkpoints
+__pycache__/
+package-lock.json
+yarn.lock
